@@ -51,7 +51,7 @@ public class EvolutionScheme
 
         Sorting lastSort = new Sorting(tracks.size(), excHappiness, excSadness, excRage, happiness, sadness, rage, loopMutated);
 
-        Resulter result = new Resulter(tracks, lastSort.sort().get(0));
+        Resulter result = new Resulter(tracks, lastSort.sort().get(0), resultLength);
         result.getResult();
 
     }

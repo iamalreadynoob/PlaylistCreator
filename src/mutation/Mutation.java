@@ -30,40 +30,65 @@ public class Mutation
         for (int i = 4; i < sorted.size(); i++)
         {
             String temp = null;
+            char[] currentComb = mutationed.get(i).toCharArray();
 
             for (int j = 0; j < setLength; j++)
             {
                 if (new Random().nextInt(100) <= mutationPossibility)
                 {
-                    for (int k = 0; k < j; k++)
+                    if (currentComb[j] == '0')
                     {
-                        if (temp == null) temp = Character.toString(mutationed.get(i).charAt(k));
-                        else temp = Character.toString(mutationed.get(i).charAt(k));
+                        currentComb[j] = '1';
+
+                        boolean isStable = false;
+
+                        while (!isStable)
+                        {
+
+                            for (int k = 0; k < mutationed.get(i).length(); k++)
+                            {
+                                if (currentComb[k] == '1' && new Random().nextInt(2) == 0)
+                                {
+                                    currentComb[k] = '0';
+                                    isStable = true;
+                                    break;
+                                }
+                            }
+
+                        }
+
+
+
                     }
-
-                    if (mutationed.get(i).charAt(j) == '0')
-                    {
-
-                        if (temp == null) temp = "1";
-                        else temp += "1";
-
-                    }
-
                     else
                     {
-                        if (temp == null) temp = "0";
-                        else temp += "0";
-                    }
+                        currentComb[j] = '0';
 
-                    if (j + 1 < setLength)
-                    {
-                        for (int k = j + 1; k < setLength; k++)
+                        boolean isStable = false;
+
+                        while (!isStable)
                         {
-                            temp += Character.toString(mutationed.get(i).charAt(k));
-                        }
-                    }
 
+                            for (int k = 0; k < mutationed.get(i).length(); k++)
+                            {
+                                if (currentComb[k] == '0' && new Random().nextInt(2) == 1)
+                                {
+                                    currentComb[k] = '1';
+                                    isStable = true;
+                                    break;
+                                }
+                            }
+
+                        }
+
+                    }
                 }
+            }
+
+            for (int j = 0; j < setLength; j++)
+            {
+                if (temp == null) temp = Character.toString(currentComb[j]);
+                else temp += Character.toString(currentComb[j]);
             }
 
             mutationed.set(i, temp);

@@ -31,6 +31,8 @@ public class Sorting
         ArrayList<String> sorted = gen;
         ArrayList<Integer> scores = new ArrayList<>();
 
+        System.out.println(sorted);
+
         for (int i = 0; i < gen.size(); i++)
         {
             String examine = sorted.get(i);

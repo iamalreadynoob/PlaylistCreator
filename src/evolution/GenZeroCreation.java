@@ -26,10 +26,10 @@ public class GenZeroCreation
 
             for (int j = 0; j < setLength; j++)
             {
-                if (amount < 10)
+                if (amount < resultLength)
                 {
                     int existance = new Random().nextInt(2);
-                    amount++;
+                    if (existance == 1) amount++;
 
                     if (current == null) current = Integer.toString(existance);
                     else current += Integer.toString(existance);
@@ -37,6 +37,41 @@ public class GenZeroCreation
                 }
 
                 else current += "0";
+            }
+
+            if (amount < resultLength)
+            {
+                char[] notEnough = current.toCharArray();
+
+                while (amount != resultLength)
+                {
+
+                    for (int j = 0; j < notEnough.length; j++)
+                    {
+                        if (notEnough[j] == '0')
+                        {
+                            int existance = new Random().nextInt(2);
+
+                            if (existance == 1)
+                            {
+                                notEnough[j] = '1';
+                                amount++;
+                            }
+
+                        }
+
+                        if (amount == resultLength) break;
+                    }
+
+                }
+
+                String temp = null;
+                for (int j = 0; j < notEnough.length; j++)
+                {
+                    if (temp == null) temp = Character.toString(notEnough[j]);
+                    else temp += Character.toString(notEnough[j]);
+                }
+
             }
 
             genZero.add(current);

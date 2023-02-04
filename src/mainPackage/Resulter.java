@@ -8,10 +8,13 @@ public class Resulter
     private ArrayList<String> tracks;
     private String result;
 
-    public Resulter(ArrayList<String> tracks, String result)
+    private int resultLength;
+
+    public Resulter(ArrayList<String> tracks, String result, int resultLength)
     {
         this.tracks = tracks;
         this.result = result;
+        this.resultLength = resultLength;
     }
 
     public void getResult()
